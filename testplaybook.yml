@@ -1,0 +1,10 @@
+---
+ - hosts: client
+   become: true
+   become_method: sudo
+   become_user: root
+   tasks:
+    - name: Display the contents of /etc/resolv.conf file
+      command: cat /etc/resolv.conf
+      register: out
+      debug: out
