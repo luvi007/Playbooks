@@ -5,3 +5,6 @@
    - name: useradd
      useradd:
        user: luvi
+   - name: restart sshd service
+     service: sshd
+     status: restarted
