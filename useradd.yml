@@ -1,3 +1,7 @@
 --- 
 - hosts:   
   become: true
+  task:
+   - name: useradd
+     useradd:
+       user: luvi
