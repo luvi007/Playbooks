@@ -8,3 +8,7 @@
       command: cat /etc/resolv.conf
       register: out
       debug: out
+    - name: content verify
+      debug: out
+      when: rc==0
+
