@@ -1,0 +1,10 @@
+---
+- name: Printing /etc/motd file from Managed hosts
+  hosts: all
+  tasks:
+   - name: Print /etc/motd file
+     command: 
+      cmd: "cat /etc/motd"
+     register: out
+   - debug:
+      var: out.stdout

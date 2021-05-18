@@ -1,0 +1,17 @@
+---
+- name: Installation of users using vars
+  hosts: server
+  vars:
+    user_1: joe
+    user_2: flu
+  tasks:
+    - name: user creationg and setting home dir
+      user:
+        name:
+         - "{{ user_1 }}"
+         - "{{ user_2 }}"
+      register: out
+    - debug:
+        msg: successfull
+      when: out.rc == 0 
+

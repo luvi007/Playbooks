@@ -1,0 +1,9 @@
+---
+- name: Testing purpose
+  hosts: all
+  tasks:
+   - name: testing
+     command: "cat /etc/hosts"
+     register: out
+   - debug:
+       var: out

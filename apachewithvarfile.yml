@@ -1,0 +1,20 @@
+---
+- name: varfile testing
+  hosts: server
+  vars_files:
+    - varfile.yml
+  tasks:
+    - name: apache install and wget install
+      dnf:
+       name:
+        - "{{ package1 }}"
+        - "{{ package2 }}"
+       state: latest
+    - name: service start
+      service:
+        name: "{{ service }}"
+        state: started
+        enabled: true
+      register: output
+    - debug:
+        var: output

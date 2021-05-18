@@ -1,0 +1,27 @@
+---
+- name: Allow firewall rules for port 80
+  hosts: server
+  tasks:
+   - name: install firewall package 
+     dnf:
+      name:
+       - firewalld
+       - wget
+      state: latest
+   - name: Modify index file
+     copy:
+       content: |
+        Welcome to Apache Web page for testing
+       dest: /var/www/html/index.html
+   - name: Firewalld service start
+     service:
+       name: firewalld
+       state: started
+       enabled: true
+   - name: Allow port 80 to connect to Apache website
+     firewalld:
+       service: http
+       permanent: true
+       state: enabled
+       immediate: yes
+          

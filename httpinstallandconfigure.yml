@@ -1,0 +1,17 @@
+---
+- name: Apache installation and configuration
+  hosts: server
+  tasks:
+   - name: Install Apache Package
+     dnf:
+      name: httpd
+      state: latest
+   - name: COpy Index file
+     copy:
+      src: index.html
+      dest: /var/www/html/index.html
+   - name: start service and enable it
+     service:
+      name: httpd
+      enabled: yes
+      state: started

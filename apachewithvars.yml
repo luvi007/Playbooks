@@ -1,0 +1,19 @@
+---
+- name: testing with vars to install apache
+  hosts: server
+  vars:
+   package1: httpd
+   package2: wget
+   service: httpd
+  tasks:
+    - name: install apache
+      dnf:
+       name: 
+        - "{{ package1 }}"
+        - "{{ package2 }}"
+       state: latest
+    - name: start service
+      service:
+       name: "{{ service }}"
+       enabled: true
+       state: started
