@@ -9,3 +9,5 @@
      service: sshd
      status: restarted
      register: out
+   - debug:
+        var: out
