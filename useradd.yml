@@ -8,3 +8,4 @@
    - name: restart sshd service
      service: sshd
      status: restarted
+     register: out
